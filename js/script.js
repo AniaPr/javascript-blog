@@ -1,6 +1,7 @@
 "use strict";
 
 function titleClickHandler(event) {
+	event.preventDefault();
 	const clickedElement = this;
 	console.log("Link was clicked!");
 
@@ -26,6 +27,9 @@ function titleClickHandler(event) {
 	}
 
 	/* get 'href' attribute from the clicked link */
+
+	const articleSelector = clickedElement.getAttribute("href");
+	console.log(articleSelector);
 
 	/* find the correct article using the selector (value of 'href' attribute) */
 
