@@ -144,7 +144,10 @@ function generateTags() {
 
       /* END LOOP: for each tag */
     }
-    /* insert HTML of all the links into the tags wrapper */
+    /* [DONE] insert HTML of all the links into the tags wrapper */
+
+    tagWrapper.innerHTML = html;
+
     /* END LOOP: for every article: */
   }
 }
