@@ -167,13 +167,20 @@ function tagClickHandler(event) {
   const clickedElement = this;
   console.log('Link was clicked!');
 
-  /* make a new constant "href" and read the attribute "href" of the clicked element */
+  /* [DONE] make a new constant "href" and read the attribute "href" of the clicked element */
 
   const href = clickedElement.getAttribute('href');
   console.log(href);
 
-  /* make a new constant "tag" and extract tag from the "href" constant */
-  /* find all tag links with class active */
+  /* [DONE] make a new constant "tag" and extract tag from the "href" constant */
+
+  const tag = href.replace('#tag-', '');
+  console.log(tag);
+
+  /* [DONE] find all tag links with class active */
+
+  const tagLinks = document.querySelectorAll('a[href="' + href + '"]');
+  console.log(tagLinks);
   /* START LOOP: for each active tag link */
   /* remove class active */
   /* END LOOP: for each active tag link */
