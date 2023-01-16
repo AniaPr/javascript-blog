@@ -139,9 +139,10 @@ function generateTags() {
 
       /* [DONE] generate HTML of the link */
 
-      const htmlLink =
-        ' <li><a href="#' + articleTags + '">' + tag + '</a></li>';
+      const htmlLink = ' <li><a href="#tag-' + tag + '">' + tag + '</a></li>';
       console.log(htmlLink);
+
+      //<li><a href="#tag-cat">cat</a></li>
 
       /* [DONE] add generated code to html variable */
 
@@ -200,7 +201,6 @@ function tagClickHandler(event) {
   /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
 
   const targetTags = document.querySelectorAll(href);
-  console.log(targetTags);
 
   /* START LOOP: for each found tag link */
 
@@ -214,18 +214,17 @@ function tagClickHandler(event) {
   /* [DONE] execute function "generateTitleLinks" with article selector as argument */
 
   generateTitleLinks('[data-tags~="' + tag + '"]');
-  console.log(generateTitleLinks);
 }
 
 function addClickListenersToTags() {
-  /* find all links to tags */
+  /* [DONE] find all links to tags */
 
   const linkToTags = document.querySelectorAll('a[href^="#tag-"]');
 
   /* START LOOP: for each link */
 
   for (let linkToTag of linkToTags) {
-    /* add tagClickHandler as event listener for that link */
+    /* [DONE] add tagClickHandler as event listener for that link */
     linkToTag.addEventListener('click', tagClickHandler);
   }
   /* END LOOP: for each link */
