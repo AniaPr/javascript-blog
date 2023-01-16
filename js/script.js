@@ -191,7 +191,7 @@ function tagClickHandler(event) {
   for (let tagLink of tagLinks) {
     /* [DONE] remove class active */
 
-    tagLink.classList.remove('a[href="' + href + '"]');
+    tagLink.classList.remove('active');
     console.log(tagLink);
 
     /* END LOOP: for each active tag link */
@@ -207,7 +207,7 @@ function tagClickHandler(event) {
   for (let targetTag of targetTags) {
     /* [DONE] add class active */
 
-    targetTag.classList.add('a[href="' + href + '"]');
+    targetTag.classList.add('active');
     console.log(targetTag);
     /* END LOOP: for each found tag link */
   }
@@ -219,8 +219,15 @@ function tagClickHandler(event) {
 
 function addClickListenersToTags() {
   /* find all links to tags */
+
+  const linkToTags = document.querySelectorAll('a[href^="#tag-"]');
+
   /* START LOOP: for each link */
-  /* add tagClickHandler as event listener for that link */
+
+  for (let linkToTag of linkToTags) {
+    /* add tagClickHandler as event listener for that link */
+    linkToTag.addEventListener('click', tagClickHandler);
+  }
   /* END LOOP: for each link */
 }
 
