@@ -45,7 +45,8 @@ const optArticleAuthorSelector = '.post-author',
   optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list';
+  optArticleTagsSelector = '.post-tags .list',
+  optTagsListSelector = '.tags.list';
 
 function generateTitleLinks(customSelector = '') {
   console.log(customSelector);
@@ -108,6 +109,9 @@ function generateTitleLinks(customSelector = '') {
 generateTitleLinks();
 
 function generateTags() {
+  /* [NEW] create a new variable allTags with an empty object */
+  let allTags = {};
+
   /* [DONE] find all articles */
 
   const articles = document.querySelectorAll(optArticleSelector);
@@ -151,6 +155,14 @@ function generateTags() {
       html = html + htmlLink;
       console.log(html);
 
+      /* [NEW] check if this link is NOT already in allTags */
+      if (!allTags.hasOwnProperty(tag)) {
+        /* [NEW] add tag to allTags object */
+        allTags[tag] = 1;
+      } else {
+        allTags[tag]++;
+      }
+
       /* END LOOP: for each tag */
     }
     /* [DONE] insert HTML of all the links into the tags wrapper */
@@ -160,6 +172,32 @@ function generateTags() {
 
     /* END LOOP: for every article: */
   }
+
+  /* [NEW] find list of tags in right column */
+  const tagList = document.querySelector(optTagsListSelector);
+
+  /* [NEW] create variable for all links HTML code */
+  let allTagsHTML = '';
+
+  /* [NEW] START LOOP: for each tag in allTags: */
+  for (let tag in allTags) {
+    /* [NEW] generate code of a link and add it to allTagHTML */
+
+    //allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+
+    allTagsHTML +=
+      '<li><a href="#tag-' +
+      tag +
+      '">' +
+      tag +
+      '</a>(' +
+      allTags[tag] +
+      ')</li>';
+
+    console.log(allTagsHTML);
+  }
+
+  tagList.innerHTML = allTagsHTML;
 }
 
 generateTags();
@@ -254,7 +292,7 @@ function generateAuthors() {
     /* [DONE] generate HTML of the link */
 
     const authorLink =
-      ' <li><a href="#author-' +
+      '<li><a href="#author-' +
       articleAuthor +
       '">' +
       articleAuthor +
