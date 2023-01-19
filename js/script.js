@@ -261,7 +261,7 @@ function tagClickHandler(event) {
 
   /* [DONE] find all tag links with class active */
 
-  const tagLinks = document.querySelectorAll('a[href="' + href + '"]');
+  const tagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
   console.log(tagLinks);
 
   /* START LOOP: for each active tag link */
@@ -277,7 +277,7 @@ function tagClickHandler(event) {
 
   /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
 
-  const targetTags = document.querySelectorAll(href);
+  const targetTags = document.querySelectorAll('a[href="' + href + '"]');
   console.log(targetTags);
 
   /* START LOOP: for each found tag link */
@@ -359,7 +359,7 @@ function authorClickHandler(event) {
 
   /* [DONE] find all author links with class active */
 
-  const authorLinks = document.querySelectorAll('a[href="' + href + '"]');
+  const authorLinks = document.querySelectorAll('a.active[href^="#author-"]');
   console.log(authorLinks);
 
   /* START LOOP: for each active author link */
@@ -374,7 +374,7 @@ function authorClickHandler(event) {
   }
   /* [DONE] find all author links with "href" attribute equal to the "href" constant */
 
-  const targetAuthors = document.querySelectorAll(href);
+  const targetAuthors = document.querySelectorAll('a[href="' + href + '"]');
   console.log(targetAuthors);
 
   /* START LOOP: for each found author link */
