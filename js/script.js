@@ -330,25 +330,12 @@ function generateAuthors() {
     /* [DONE] generate HTML of the link */
 
     const authorLink =
-      '<li><a href="#author-' +
-      articleAuthor +
-      '">' +
-      articleAuthor +
-      '</a></li>';
+      '<a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>';
     console.log(authorLink);
 
-    /* [DONE] make html variable with empty string */
+    /* [DONE] insert HTML of the link into the authors wrapper */
 
-    let html = '';
-
-    /* [DONE] add generated code to html variable */
-
-    html = html + authorLink;
-    console.log(html);
-
-    /* [DONE] insert HTML of all the links into the author wrapper */
-
-    authorsWrapper.innerHTML = html;
+    authorsWrapper.innerHTML = authorLink;
     console.log(authorsWrapper);
   }
 }
