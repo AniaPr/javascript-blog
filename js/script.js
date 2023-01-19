@@ -46,7 +46,9 @@ const optArticleAuthorSelector = '.post-author',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
-  optTagsListSelector = '.tags.list';
+  optTagsListSelector = '.tags.list',
+  optCloudClassCount = '5',
+  optCloudClassPrefix = 'tag-size-';
 
 function generateTitleLinks(customSelector = '') {
   console.log(customSelector);
@@ -112,7 +114,7 @@ function calculateTagsParams(tags) {
   const params = { max: '0', min: '999999' };
 
   for (let tag in tags) {
-    console.log(tag + 'is used' + tags[tag] + 'times');
+    console.log(tag + ' is used ' + tags[tag] + ' times');
 
     if (tags[tag] > params.max) {
       params.max = tags[tag];
@@ -125,6 +127,8 @@ function calculateTagsParams(tags) {
 
   return params;
 }
+
+function calculateTagClass(count, params) {}
 
 function generateTags() {
   /* [NEW] create a new variable allTags with an empty object */
@@ -194,6 +198,8 @@ function generateTags() {
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector(optTagsListSelector);
 
+  /* [NEW] find extreme number of tag's occurance */
+
   const tagsParams = calculateTagsParams(allTags);
   console.log('tagsParams:', tagsParams);
 
@@ -204,18 +210,20 @@ function generateTags() {
   for (let tag in allTags) {
     /* [NEW] generate code of a link and add it to allTagHTML */
 
-    //allTagsHTML += tag + ' (' + allTags[tag] + ') ';
-
-    allTagsHTML +=
+    const tagLinkHTML =
       '<li><a href="#tag-' +
       tag +
+      '" class="' +
+      calculateTagClass(allTags[tag], tagsParams) +
       '">' +
       tag +
       '</a>(' +
       allTags[tag] +
       ')</li>';
 
-    console.log(allTagsHTML);
+    console.log('tagLinkHTML:', tagLinkHTML);
+
+    allTagsHTML += tagLinkHTML;
   }
 
   tagList.innerHTML = allTagsHTML;
@@ -262,6 +270,7 @@ function tagClickHandler(event) {
   /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
 
   const targetTags = document.querySelectorAll(href);
+  console.log(targetTags);
 
   /* START LOOP: for each found tag link */
 
