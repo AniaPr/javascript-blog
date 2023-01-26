@@ -189,7 +189,7 @@ function generateTags() {
 
       /* [DONE] generate HTML of the link */
 
-      const htmlTagData = { tag: tag, tag: tag };
+      const htmlTagData = { tag };
       const htmlTag = templates.tagLink(htmlTagData);
 
       /* [DONE] add generated code to html variable */
@@ -282,7 +282,7 @@ function tagClickHandler(event) {
 
   /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
 
-  const targetTags = document.querySelectorAll('a[href="' + href + '"]');
+  const targetTags = document.querySelectorAll(`a[href="${href}"]`);
   console.log(targetTags);
 
   /* START LOOP: for each found tag link */
@@ -296,7 +296,8 @@ function tagClickHandler(event) {
   }
   /* [DONE] execute function "generateTitleLinks" with article selector as argument */
 
-  generateTitleLinks('[data-tags~="' + tag + '"]');
+  generateTitleLinks(`[data-tags~="${tag}"]`);
+  //('[data-tags~="' + tag + '"]');
 }
 
 function addClickListenersToTags() {
@@ -338,7 +339,7 @@ function generateAuthors() {
 
     /* [DONE] generate HTML of the link */
 
-    const authorLinkData = { author: articleAuthor, author: articleAuthor };
+    const authorLinkData = { author: articleAuthor };
     const authorLink = templates.articleAuthor(authorLinkData);
 
     /* [NEW] check if this link is NOT already in allAuthors */
@@ -415,7 +416,8 @@ function authorClickHandler(event) {
   }
   /* [DONE] find all author links with "href" attribute equal to the "href" constant */
 
-  const targetAuthors = document.querySelectorAll('a[href="' + href + '"]');
+  const targetAuthors = document.querySelectorAll(`a[href="${href}"]`);
+  //('a[href="' + href + '"]');
   console.log(targetAuthors);
 
   /* START LOOP: for each found author link */
@@ -429,7 +431,8 @@ function authorClickHandler(event) {
   }
   /* [DONE] execute function "generateTitleLinks" with article selector as argument */
 
-  generateTitleLinks('[data-author="' + author + '"]');
+  generateTitleLinks(`[data-author="${author}"]`);
+  //('[data-author="' + author + '"]');
 }
 
 function addClickListenersToAuthors() {
